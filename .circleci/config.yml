@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  deploy_production:
+  build_production:
     docker:
        - image: circleci/ruby:2.4.1-node-browsers
     steps:
@@ -40,7 +40,14 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - deploy_production:
+      - build_production:
+          filters:
+            branches:
+              only:
+                - master
+      - deploy_production_infrastructure:
+          requires:
+            - build_production
           filters:
             branches:
               only:
