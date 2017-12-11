@@ -24,7 +24,7 @@ jobs:
       - checkout
       - run:
           name: deploy infrastructure
-          command: cd infrastructure && terraform apply
+          command: cd infrastructure && terraform init && terraform apply
       - run:
           name: install pip
           command: sudo apt-get install python-pip
