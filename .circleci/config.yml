@@ -10,7 +10,7 @@ jobs:
           command: sudo gem install jekyll bundler
       - run:
           name: install deps
-          command: sudo bundle install
+          command: bundle install
       - run:
           name: production
           command: JEKYLL_ENV=production bundle exec jekyll build
