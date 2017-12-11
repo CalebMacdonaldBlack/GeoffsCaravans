@@ -29,11 +29,8 @@ jobs:
           name: install sudo
           command: apk add sudo
       - run:
-          name: install pip
-          command: sudo apk add py-pip
-      - run:
           name: install aws cli
-          command: sudo pip install awscli --upgrade --user
+          command: curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" && unzip awscli-bundle.zip && sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
       - run:
           name: deploy site to s3
           command: aws s3 sync ./_site s3://${site_bucket_name}/
