@@ -24,7 +24,7 @@ jobs:
       - checkout
       - run:
           name: deploy infrastructure
-          command: cd infrastructure && terraform init && terraform apply -var region=${TF_VAR_REGION} -var namespace=${TF_VAR_NAMESPACE}
+          command: cd infrastructure && terraform init && terraform apply -var region=${TF_VAR_REGION} -var namespace=${TF_VAR_NAMESPACE} -auto-approve
       - run:
           name: install pip
           command: sudo apt-get install python-pip
