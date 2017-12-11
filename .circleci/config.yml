@@ -1,0 +1,11 @@
+version: 2
+jobs:
+  build:
+    docker:
+       - image: circleci/ruby:2.4.1-node-browsers
+    working_directory: ~/
+    steps:
+      - checkout
+      - run:
+          name: install jekyll bundler
+          command: sudo gem install jekyll bundler
