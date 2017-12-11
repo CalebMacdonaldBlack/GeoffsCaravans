@@ -30,7 +30,7 @@ jobs:
           command: apk add sudo
       - run:
           name: install pip
-          command: sudo apk add python-pip
+          command: sudo apk add py-pip
       - run:
           name: install aws cli
           command: sudo pip install awscli --upgrade --user
