@@ -26,11 +26,14 @@ jobs:
           name: deploy infrastructure
           command: cd infrastructure && terraform init && terraform apply -var region=${TF_VAR_REGION} -var namespace=${TF_VAR_NAMESPACE} -auto-approve
       - run:
+          name: install sudo
+          command: apk add sudo
+      - run:
           name: install pip
-          command: apt-get install python-pip
+          command: sudo apk add python-pip
       - run:
           name: install aws cli
-          command: pip install awscli --upgrade --user
+          command: sudo pip install awscli --upgrade --user
       - run:
           name: deploy site to s3
           command: aws s3 sync ./_site s3://${site_bucket_name}/
