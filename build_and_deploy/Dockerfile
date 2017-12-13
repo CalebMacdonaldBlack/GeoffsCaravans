@@ -1,7 +1,8 @@
 FROM ubuntu
 
-RUN sudo apt-get install ruby-full
-RUN sudo gem install jekyll bundler
+RUN apt-get update
+RUN apt-get install ruby-full
+RUN gem install jekyll bundler
 ENV TERRAFORM_VERSION=0.10.0
 RUN apk add --update git bash openssh
 ENV TF_DEV=true
