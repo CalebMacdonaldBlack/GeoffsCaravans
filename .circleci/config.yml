@@ -24,7 +24,7 @@ jobs:
       - checkout
       - run:
           name: ls
-          command: lgs
+          command: ls
       - run:
           name: deploy infrastructure
           command: cd infrastructure && terraform init && (terraform workspace select ${CIRCLE_BRANCH} || terraform workspace new ${CIRCLE_BRANCH}) && terraform apply -var region=$REGION} -var namespace=${NAMESPACE} -auto-approve
@@ -46,7 +46,7 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build:
+      - build
       - deploy:
           requires:
             - build
