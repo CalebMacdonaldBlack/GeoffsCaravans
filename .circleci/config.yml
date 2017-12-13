@@ -24,7 +24,7 @@ jobs:
       - checkout
       - run:
           name: deploy infrastructure
-          command: cd infrastructure && terraform init && terraform apply -var region=${TF_VAR_REGION} -var namespace=${TF_VAR_NAMESPACE} -auto-approve
+          command: cd infrastructure && terraform init && (terraform workspace select ${CIRCLE_BRANCH} || terraform workspace new ${CIRCLE_BRANCH}) && terraform apply -var region=$REGION} -var namespace=${NAMESPACE} -auto-approve
       - run:
           name: install sudo
           command: apk add sudo
