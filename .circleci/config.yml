@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_production:
+  build:
     docker:
        - image: circleci/ruby:2.4.1-node-browsers
     steps:
@@ -17,7 +17,7 @@ jobs:
       - store_artifacts:
           path: /_site
 
-  deploy_production_infrastructure:
+  deploy:
     docker:
       - image: hashicorp/terraform:latest
     steps:
@@ -43,15 +43,7 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build_production:
-          filters:
-            branches:
-              only:
-                - master
-      - deploy_production_infrastructure:
+      - build:
+      - deploy:
           requires:
-            - build_production
-          filters:
-            branches:
-              only:
-                - master
+            - build
