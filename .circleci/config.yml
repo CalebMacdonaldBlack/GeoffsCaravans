@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: install ruby
-          command: apk add ruby && gem update --system
+          command: apk add ruby && gem install rdoc
       - run:
           name: install jekyll bundler
           command: gem install jekyll bundler
