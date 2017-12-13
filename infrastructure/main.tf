@@ -6,13 +6,13 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "site" {
-  bucket = "${var.namespace}-site"
+  bucket = "${terraform.workspace}-${var.namespace}-site"
 }
 
 terraform {
   backend "s3" {
     bucket = "geoffs-caravans"
-    key    = "state.tfstate"
+    key = "state.tfstate"
     region = "ap-southeast-2"
   }
 }
